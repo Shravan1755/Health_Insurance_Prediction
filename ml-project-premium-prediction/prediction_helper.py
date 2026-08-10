@@ -1,5 +1,24 @@
-import pandas as pd
+import streamlit as st
 import joblib
+import pandas as pd
+
+# Use @st.cache_resource for ML models or database connections
+@st.cache_resource
+def load_my_model():
+    return joblib.load("my_xgb_model.joblib")
+
+# Use @st.cache_data for loading CSVs, DataFrames, or text
+@st.cache_data
+def load_my_data():
+    return pd.read_csv("dataset.csv")
+
+# Call the functions normally in your app
+model = load_my_model()
+df = load_my_data()
+
+
+# import pandas as pd
+# import joblib
 import os
 
 # Get the directory where this file is located
