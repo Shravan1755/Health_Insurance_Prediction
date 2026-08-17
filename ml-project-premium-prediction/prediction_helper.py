@@ -5,7 +5,7 @@ import pandas as pd
 # Use @st.cache_resource for ML models or database connections
 @st.cache_resource
 def load_my_model():
-    return joblib.load("artifacts/my_rest.joblib")
+    return joblib.load("artifacts/model_rest.joblib")
 
 # Use @st.cache_data for loading CSVs, DataFrames, or text
 @st.cache_data
