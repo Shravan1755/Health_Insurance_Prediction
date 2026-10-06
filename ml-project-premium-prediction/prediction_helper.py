@@ -21,7 +21,8 @@ USE_DATASET = False
 if USE_DATASET:
     @st.cache_data
     def load_my_data():
-        return pd.read_csv("artifacts/dataset.csv")
+        data_path = os.path.join(os.path.dirname(__file__), "artifacts", "premiums.xlsx")        
+        return pd.read_xlsx(data_path)
     df = load_my_data()
 else:
     df = None
