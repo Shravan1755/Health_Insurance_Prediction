@@ -16,7 +16,7 @@ def load_my_model():
 #     data_path = os.path.join(os.path.dirname(__file__), "artifacts", "dataset.csv")
 #     return pd.read_csv(data_path)
 
-USE_DATASET = Fals
+USE_DATASET = False
 
 if USE_DATASET:
     @st.cache_data
