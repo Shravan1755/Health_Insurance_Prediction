@@ -1,29 +1,25 @@
 import streamlit as st
 import joblib
 import pandas as pd
+import os
 
 # Use @st.cache_resource for ML models or database connections
-# @st.cache_resource
-# def load_my_model():
-#     return joblib.load("artifacts/model_rest.joblib")
-
-import os
-model_path = os.path.join(os.path.dirname(__file__), "artifacts", "model_rest.joblib")
-model = joblib.load(model_path)
+@st.cache_resource
+def load_my_model():
+    model_path = os.path.join(os.path.dirname(__file__), "artifacts", "model_rest.joblib")
+    return joblib.load(model_path)
+    # model = joblib.load(model_path)
 
 # Use @st.cache_data for loading CSVs, DataFrames, or text
 @st.cache_data
 def load_my_data():
-    return pd.read_csv("artifacts/dataset.csv")
+    data_path = os.path.join(os.path.dirname(__file__), "artifacts", "dataset.csv")
+    return pd.read_csv(data_path)
 
 # Call the functions normally in your app
 model = load_my_model()
 df = load_my_data()
 
-
-# import pandas as pd
-# import joblib
-import os
 
 # Get the directory where this file is located
 current_dir = os.path.dirname(os.path.abspath(__file__))
