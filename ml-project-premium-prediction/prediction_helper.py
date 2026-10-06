@@ -11,10 +11,21 @@ def load_my_model():
     # model = joblib.load(model_path)
 
 # Use @st.cache_data for loading CSVs, DataFrames, or text
-@st.cache_data
-def load_my_data():
-    data_path = os.path.join(os.path.dirname(__file__), "artifacts", "dataset.csv")
-    return pd.read_csv(data_path)
+# @st.cache_data
+# def load_my_data():
+#     data_path = os.path.join(os.path.dirname(__file__), "artifacts", "dataset.csv")
+#     return pd.read_csv(data_path)
+
+USE_DATASET = Fals
+
+if USE_DATASET:
+    @st.cache_data
+    def load_my_data():
+        return pd.read_csv("artifacts/dataset.csv")
+    df = load_my_data()
+else:
+    df = None
+
 
 # Call the functions normally in your app
 model = load_my_model()
