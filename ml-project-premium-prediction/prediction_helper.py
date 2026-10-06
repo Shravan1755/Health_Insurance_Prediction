@@ -3,9 +3,13 @@ import joblib
 import pandas as pd
 
 # Use @st.cache_resource for ML models or database connections
-@st.cache_resource
-def load_my_model():
-    return joblib.load("artifacts/model_rest.joblib")
+# @st.cache_resource
+# def load_my_model():
+#     return joblib.load("artifacts/model_rest.joblib")
+
+import os
+model_path = os.path.join(os.path.dirname(__file__), "artifacts", "model_rest.joblib")
+model = joblib.load(model_path)
 
 # Use @st.cache_data for loading CSVs, DataFrames, or text
 @st.cache_data
